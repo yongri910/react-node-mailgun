@@ -17,14 +17,17 @@ app.use(express.urlencoded({ extended: true}));
 app.post(`/api/email`, (req, res) => {
 	const {email, subject, message} = req.body;
 	mailgun().messages().send({
-		from: 'John Doe <john@mg.yourdomain.com',
+		from: 'YongRi <yongri910@outlook.com>',
 		to: `${email}`,
 		subject: `${subject}`,
-		thml: `<p>${message}</p>`,
+		html: `<p>${message}</p>`,
 	},
 	(error, body) => {
 		if (error) {
 			console.log(error);
+			console.log('[email]', email)
+			console.log('[subject]', subject)
+			console.log('[message]', message)
 			res.status(500).send({message: 'Error in sending email'});
 		} else {
 			console.log(body);

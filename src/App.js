@@ -23,7 +23,7 @@ function App() {
         subject,
         message,
       });
-      setLoading(true);
+      setLoading(false);
       toast.success(data.message);
     } catch (err) {
       setLoading(false);
